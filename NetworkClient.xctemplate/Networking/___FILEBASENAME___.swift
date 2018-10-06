@@ -7,7 +7,7 @@ enum Result<T> {
     case failure(Error)
 }
 
-class ___FILEBASENAMEASIDENTIFIER___Client {
+class ___FILEBASENAMEASIDENTIFIER___ {
     
     static func get<K: Codable>(url: URL, completion: @escaping (Result<K>) -> Void) {
         var request = URLRequest(url: url)
