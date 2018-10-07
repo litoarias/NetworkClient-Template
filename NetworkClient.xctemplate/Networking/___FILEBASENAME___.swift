@@ -18,7 +18,7 @@ class ___FILEBASENAMEASIDENTIFIER___ {
             urlComp?.queryItems?.append(URLQueryItem(name: $0.key, value: $0.value as? String))
         })
         
-        NetworkClient().task(request: request, completion: completion).resume()
+        NetworkClient.task(request: request, completion: completion).resume()
     }
     
     
@@ -32,11 +32,11 @@ class ___FILEBASENAMEASIDENTIFIER___ {
         request.httpBody = httpBody
         request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
         
-        NetworkClient().task(request: request, completion: completion).resume()
+        NetworkClient.task(request: request, completion: completion).resume()
     }
     
     
-    fileprivate func task<K: Codable>(request: URLRequest, completion: @escaping (Result<K>) -> Void) -> URLSessionDataTask {
+    fileprivate static func task<K: Codable>(request: URLRequest, completion: @escaping (Result<K>) -> Void) -> URLSessionDataTask {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         return session.dataTask(with: request) { (responseData, response, responseError) in
             if let error = responseError {
